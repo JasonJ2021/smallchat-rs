@@ -1,6 +1,6 @@
-use std::{io, time::Duration};
+use std::time::Duration;
 
-use tokio::{io::{AsyncWriteExt, AsyncReadExt}, net::TcpSocket, time::sleep};
+use tokio::{io::AsyncWriteExt, net::TcpSocket, time::sleep};
 
 #[tokio::main]
 async fn main() {

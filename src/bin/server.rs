@@ -1,7 +1,6 @@
 use std::str::from_utf8;
 use std::sync::Arc;
 
-use crossbeam::epoch::Shared;
 use tokio::sync::mpsc::error::SendError;
 use tokio::sync::mpsc::UnboundedReceiver;
 use tokio::sync::mpsc::UnboundedSender;
@@ -141,6 +140,7 @@ impl SharedState {
     }
 
     // TODO: SendError在这个函数内部处理
+    #[allow(non_snake_case)]
     fn sendMsgToAllClientsBut(&self, excluded: usize, msg: &str) -> Result<(), SendError<String>> {
         for i in 0..self.maxclients as usize {
             if self.clients[i].is_none() || i == excluded {
